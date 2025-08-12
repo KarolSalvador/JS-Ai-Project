@@ -61,19 +61,28 @@ menuBtn.addEventListener("click", () => {
 sendBtn.addEventListener("click", async () => {
   showResponse.classList.add("visible-response");
 
-  const aiInUse = aiName.textContent;
-  aiSelected.textContent = aiInUse;
+  const userMessage = document.createElement("div");
+  userMessage.className = "user-message";
+  userMessage.textContent = userQuestion.value;
+
+  const aiMessage = document.createElement("div");
+  aiMessage.className = "ai-message";
+  aiMessage.textContent = "Carregando...";
+
+  const chatHistory = document.querySelector(".chat-history");
+  chatHistory.appendChild(userMessage);
+  chatHistory.appendChild(aiMessage);
 
   const apiToken = apiKey.value;
   const questionText = userQuestion.value;
 
-  await sendQuestion(apiToken, questionText);
+  await sendQuestion(apiToken, questionText, aiMessage);
 
   userQuestion.value = "";
 });
 
-async function sendQuestion(apiToken, questionText) {
-  responseText.textContent = "Carregando...";
+async function sendQuestion(apiToken, questionText, aiMessage) {
+  aiMessage.textContent = "Carregando...";
 
   let apiUrl;
   let requestOptions;
@@ -115,7 +124,7 @@ async function sendQuestion(apiToken, questionText) {
       }),
     };
   } else {
-    responseText.textContent = "Por favor, selecione uma IA no menu suspenso.";
+    aiMessage.textContent = "Por favor, selecione uma IA no menu suspenso.";
     return;
   }
 
@@ -125,21 +134,21 @@ async function sendQuestion(apiToken, questionText) {
 
     if (aiInUse.includes("Gemini")) {
       if (data.candidates && data.candidates[0] && data.candidates[0].content) {
-        responseText.textContent = data.candidates[0].content.parts[0].text;
+        aiMessage.textContent = data.candidates[0].content.parts[0].text;
       } else {
-        responseText.textContent =
+        aiMessage.textContent =
           "Desculpe, não foi possível obter uma resposta do Gemini.";
       }
     } else if (aiInUse.includes("GPT")) {
       if (data.choices && data.choices[0] && data.choices[0].message) {
-        responseText.textContent = data.choices[0].message.content;
+        aiMessage.textContent = data.choices[0].message.content;
       } else {
-        responseText.textContent =
+        aiMessage.textContent =
           "Desculpe, não foi possível obter uma resposta do GPT.";
       }
     }
   } catch (error) {
-    responseText.textContent = `Erro: ${error.message}. Verifique a API Key ou a conexão.`;
+    aiMessage.textContent = `Erro: ${error.message}. Verifique a API Key ou a conexão.`;
     console.error("Erro na requisição:", error);
   }
 }
