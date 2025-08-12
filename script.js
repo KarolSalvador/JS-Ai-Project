@@ -18,6 +18,8 @@ const responseText = document.querySelector(".response-text");
 const apiKey = document.getElementById("api-key");
 const userQuestion = document.getElementById("question");
 
+const newChat = document.querySelector(".new-chat-btn");
+
 let isOpen = false;
 
 dropBtn.addEventListener("click", () => {
@@ -152,3 +154,7 @@ async function sendQuestion(apiToken, questionText, aiMessage) {
     console.error("Erro na requisição:", error);
   }
 }
+
+newChat.addEventListener("click", () => {
+  console.log("pegou");
+});
