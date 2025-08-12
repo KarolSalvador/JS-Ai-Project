@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat AI</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <nav class="nav-side">
+        <div class="sidebar-head">
+          <button id="menu_btn">
+            <img
+              src="./assets/menu_hamburger.svg"
+              alt="ícone menu hamburguer"
+            />
+          </button>
+          <button id="lupa_btn">
+            <img src="./assets/search-alt.svg" alt="ícone lupa" />
+          </button>
+        </div>
+        <hr />
+        <div class="new-chat">
+          <button class="new-chat-btn">
+            <img
+              id="new_chat-img"
+              src="./assets/edit.svg"
+              alt="icone de nova conversa"
+            />
+            <span>Nova conversa</span>
+          </button>
+        </div>
+        <h2>Recentes</h2>
+        <ul class="nav-list">
+          <li><a href="#">conversa 1</a></li>
+          <li><a href="#">conversa 2</a></li>
+          <li><a href="#">conversa 3</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="chat-container">
+      <header>
+        <h1>Chat AI</h1>
+        <div class="header-conteiner">
+          <div class="dropdown">
+            <button id="drop-button">
+              <span id="ai-name">Escolha a IA desejada</span>
+              <span>▼</span>
+            </button>
+            <div class="drop-options">
+              <span class="drop-option" id="option-choice"
+                >Escolha a IA desejada</span
+              >
+              <span class="drop-option" id="option-gemini">Gemini</span>
+              <span class="drop-option" id="option-gpt">GPT</span>
+            </div>
+          </div>
+          <input
+            type="password"
+            name="api-key"
+            id="api-key"
+            placeholder="  Insira aqui a API Key"
+          />
+        </div>
+      </header>
+
+      <main class="main-container">
+        <section class="main-content">
+          <div class="chat-history">
+            <div class="response-area">
+              <span class="ai-selected">
+                <!-- NOME DA IA SELECIONADA -->
+              </span>
+              <p class="response-text"></p>
+              <!-- ÁREA DE RESPOSTA IA -->
+            </div>
+          </div>
+
+          <div class="question-area">
+            <textarea
+              id="question"
+              type="text"
+              placeholder="O que você deseja saber?"
+            ></textarea>
+            <button id="send-btn">
+              <img src="./assets/send-alt.svg" alt="Botão de enviar" />
+            </button>
+          </div>
+          <p>
+            Qualquer IA pode cometer erros. é altamente recomendado checar as
+            respostas.
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <!-- <footer>Projeto desenvolvido por Karoline Salvador ☕</footer> -->
+
+    <script src="./script.js"></script>
+  </body>
+</html>

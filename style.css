@@ -1,0 +1,353 @@
+html {
+  background-color: rgb(33, 50, 69);
+  color: rgb(236, 239, 202);
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+h1 {
+  margin-bottom: 5px;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  gap: 10px;
+  justify-content: flex-start;
+  color: rgb(236, 239, 202);
+  font-size: 15px;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #415e72;
+  border-radius: 15px;
+}
+
+input {
+  background-color: rgb(33, 52, 72);
+  color: rgb(236, 239, 202);
+  border: 0.5px solid #415e72;
+  padding: 10px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+input::placeholder {
+  color: rgba(236, 239, 202, 0.7);
+}
+
+textarea::placeholder {
+  color: rgb(236, 239, 202);
+  font-family: "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
+}
+
+/* ESTILIZAÇÃO CABEÇALHO */
+#api-key {
+  flex-grow: 1;
+  max-width: 700px;
+}
+
+#drop-button {
+  background-color: rgb(33, 52, 72);
+  color: rgb(236, 239, 202);
+  border: 0.5px solid #415e72;
+  padding: 10px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: 700;
+  min-width: 200px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+}
+
+.show-dropdown ~ #drop-button,
+#drop-button.show-style {
+  border-radius: 15px 15px 0 0;
+  border-bottom: none;
+}
+
+.dropdown {
+  position: relative;
+  z-index: 999;
+}
+
+.drop-options {
+  opacity: 0;
+  visibility: hidden;
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: rgb(33, 52, 72);
+  border: 0.5px solid #415e72;
+  border-top: none;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  text-align: center;
+}
+
+.show-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: scaleY(1);
+}
+
+.hide-dropdown {
+  opacity: 0;
+  visibility: hidden;
+  transform: scaleY(0);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.drop-option {
+  color: rgb(236, 239, 202);
+  background-color: transparent;
+  font-weight: 700;
+  cursor: pointer;
+  /* border-bottom: 0.5px solid #cccc; */
+  transition: background-color 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 7px;
+}
+
+.drop-option:last-child {
+  border-bottom: none;
+}
+
+.drop-option:hover {
+  background-color: #415e72;
+  height: 100%;
+  border-radius: 0 0 15px 15px;
+}
+
+.header-conteiner {
+  display: flex;
+  gap: 35px;
+  padding-bottom: 15px;
+  width: 100%;
+  max-width: 900px;
+}
+
+/* ESTILIZAÇÃO MENU LATERAL */
+.sidebar {
+  padding: 15px;
+  background-color: rgb(39, 60, 82);
+  height: 100vh;
+  width: 250px;
+  transition: width 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.sidebar span,
+.sidebar h2,
+.sidebar ul {
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  transition-delay: 0.3s;
+}
+
+.sidebar-head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.closed-sidebar {
+  height: 100vh;
+  background-color: rgb(39, 60, 82);
+  width: 40px;
+  overflow: hidden;
+}
+
+.closed-sidebar hr {
+  width: 40px;
+}
+
+.closed-sidebar span,
+.closed-sidebar h2,
+.closed-sidebar ul {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  transition-delay: 0s;
+}
+
+.closed-sidebar #lupa_btn,
+.closed-sidebar span,
+.closed-sidebar h2,
+.closed-sidebar ul {
+  display: none;
+}
+
+.sidebar img {
+  width: 30px;
+  height: auto;
+}
+
+.new-chat {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.new-chat-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#new_chat-img {
+  width: 35px;
+  height: 35px;
+}
+
+.nav-side h2 {
+  font-size: 20px;
+  margin: 50px 0 0;
+}
+
+.nav-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.nav-list li a {
+  text-decoration: none;
+  color: rgb(236, 239, 202);
+  display: block;
+  padding: 7px;
+}
+
+.nav-list li a:hover {
+  background-color: #415e72;
+  border-radius: 15px;
+}
+
+/* ESTILIZAÇÃO ÁREA DE RESPOSTA */
+.response-area {
+  display: none;
+  padding: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.visible-response {
+  display: flex;
+}
+
+.chat-history {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* ESTILIZAÇÃO ÁREA DO PERGUNTA */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding-left: 15px;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex-grow: 1;
+  margin-bottom: 10px;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-content p {
+  color: rgb(236, 239, 202);
+  text-align: left;
+  font-size: 0.9rem;
+  margin: 5px 0;
+}
+
+.question-area {
+  border-radius: 15px 26px 26px 15px;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #415e72;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.question-area textarea {
+  background-color: rgb(33, 52, 72);
+  color: rgb(236, 239, 202);
+  font-weight: 700;
+  border: none;
+  box-sizing: border-box;
+  flex-grow: 1;
+  padding: 25px;
+  resize: none;
+  /* border: 0.5px solid rgb(105, 51, 130); */
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.question-area textarea:focus {
+  outline: none;
+}
+
+.question-area button:hover {
+  background-color: #415e72;
+  border-radius: 50px;
+}
+
+.question-area img {
+  padding: 5px;
+  width: 30px;
+  height: auto;
+}
+
+/* ESTILIZAÇÃO FOOTER */
+
+footer {
+  background-color: rgb(33, 52, 72);
+  color: rgb(236, 239, 202);
+  text-align: center;
+  padding: 15px 0;
+  font-size: 0.9rem;
+  border-top: 2px solid #415e72;
+}
