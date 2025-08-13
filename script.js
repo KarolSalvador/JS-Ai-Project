@@ -127,11 +127,11 @@ async function sendQuestion(apiToken, questionText, aiMessage) {
       body: JSON.stringify({
         model: "gpt-4o-mini",
         messages: [
-          {
-            role: "user",
-            content: questionText,
-          },
+          { role: "system", content: "Você é um assistente útil." },
+          { role: "user", content: questionText },
         ],
+        temperature: 0.7,
+        max_tokens: 500,
       }),
     };
   } else {
@@ -142,6 +142,12 @@ async function sendQuestion(apiToken, questionText, aiMessage) {
   try {
     const response = await fetch(apiUrl, requestOptions);
     const data = await response.json();
+
+    if (data.error) {
+      aiMessage.textContent = `Erro: ${data.error.message}`;
+      console.error("Erro retornado pela API:", data.error);
+      return;
+    }
 
     if (aiInUse.includes("Gemini")) {
       if (data.candidates && data.candidates[0] && data.candidates[0].content) {
