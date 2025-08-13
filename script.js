@@ -83,6 +83,15 @@ sendBtn.addEventListener("click", async () => {
   userQuestion.value = "";
 });
 
+userQuestion.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    if (userQuestion.value.trim() !== "") {
+      sendBtn.click();
+    }
+  }
+});
+
 async function sendQuestion(apiToken, questionText, aiMessage) {
   aiMessage.textContent = "Carregando...";
 
@@ -156,5 +165,9 @@ async function sendQuestion(apiToken, questionText, aiMessage) {
 }
 
 newChat.addEventListener("click", () => {
-  console.log("pegou");
+  const chatHistory = document.querySelector(".chat-history");
+  chatHistory.innerHTML = "";
+  userQuestion.value = "";
+  aiName.textContent = "Escolha a IA desejada";
+  apiKey.value = "";
 });
