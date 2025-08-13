@@ -66,6 +66,16 @@ textarea::placeholder {
     "Helvetica Neue", sans-serif;
 }
 
+::-webkit-scrollbar {
+  background-color: #415e72;
+  width: 15px;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(39, 59, 80);
+  border-radius: 10px;
+}
+
 /* ESTILIZAÇÃO CABEÇALHO */
 #api-key {
   flex-grow: 1;
