@@ -94,6 +94,10 @@ userQuestion.addEventListener("keydown", (event) => {
 
 async function sendQuestion(apiToken, questionText, aiMessage) {
   aiMessage.textContent = "Carregando...";
+  if (!apiToken) {
+    aiMessage.textContent = "Por favor, insira sua API Key.";
+    return;
+  }
 
   let apiUrl;
   let requestOptions;
