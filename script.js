@@ -53,7 +53,7 @@ dropGemini.addEventListener("click", () => {
 });
 
 dropGpt.addEventListener("click", () => {
-  selectOption("GPT");
+  selectOption("GPT-4.1 Nano");
 });
 
 menuBtn.addEventListener("click", () => {
@@ -115,7 +115,7 @@ async function sendQuestion(apiToken, questionText, aiMessage) {
         ],
       }),
     };
-  } else if (aiInUse.includes("GPT")) {
+  } else if (aiInUse.includes("GPT-4.1 Nano")) {
     apiUrl = "https://api.openai.com/v1/chat/completions";
 
     requestOptions = {
@@ -156,7 +156,7 @@ async function sendQuestion(apiToken, questionText, aiMessage) {
         aiMessage.textContent =
           "Desculpe, não foi possível obter uma resposta do Gemini.";
       }
-    } else if (aiInUse.includes("GPT")) {
+    } else if (aiInUse.includes("GPT-4.1 Nano")) {
       if (data.choices && data.choices[0] && data.choices[0].message) {
         aiMessage.textContent = data.choices[0].message.content;
       } else {
